@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: spring-hello-k8s
+spec:
+  selector:
+    matchLabels:
+      app: spring-hello-k8s
+  replicas: 1 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: spring-hello-k8s
+    spec:
+      containers:
+        - name: spring-hello-k8s
+          image: neogicel/spring-boot-app:12.0
+# Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080 
+
