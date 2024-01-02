@@ -15,7 +15,6 @@ spec:
       containers:
         - name: spring-hello-k8s
           image: neogicel/spring-hello:latest
-# Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080 
