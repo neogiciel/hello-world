@@ -1,0 +1,48 @@
+resource_types:
+- name: k8s-ressource
+  type: docker-image
+  source:
+    repository: neogicel/spring-hello
+    tag: latest
+
+resources:
+- name: hello-world-spring
+  type: git
+  source:
+    uri: https://github.com/neogiciel/hello-world.git
+- name: docker-images-hello-world-spring
+  type: docker-image
+  source:
+      repository: neogicel/spring-hello
+      username: neogicel
+      password: Patrice88$
+
+jobs:
+- name: deploy
+  plan:
+  - get: hello-world-spring
+    trigger: true
+  - get: docker-images-hello-world-spring
+    trigger: false
+  - task: kubectl-test
+    config:
+      platform: linux
+      inputs:
+        - name: hello-world-spring
+      image_resource:
+        type: registry-image
+        source: { repository: busybox }
+      run:
+        path: echo
+        args: ["Hello world!"]
+
+ #plan:
+ #   - get: docker-images-hello-world-spring
+ #     trigger: false
+#
+#    - put: k8s
+#      params:
+#          status_check_timeout: 60
+#          command_timeout: 30
+#          file: 
+#          - hello-world-spring/ci/deployment.yaml
