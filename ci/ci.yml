@@ -1,11 +1,55 @@
 resource_types:
-  - name: kubectl-resource
-    type: docker-image
-    source: 
-      repository: neogicel/spring-hello
-      tag: latest
+- name: k8s
+  type: docker-image
+  source:
+    repository: neogicel/spring-hello
+    tag: latest
 
 resources:
+- name: k8s
+  type: k8s
+  source:
+
+    api_server_url: https://172.16.10.11:6443
+
+    # or use kubeconfig
+    kubeconfig: |
+      apiVersion: v1
+      clusters:
+      - cluster:
+          certificate-authority: /home/neogiciel/.minikube/ca.crt
+          extensions:
+          - extension:
+              last-update: Tue, 12 Dec 2023 00:44:20 CET
+              provider: minikube.sigs.k8s.io
+              version: v1.32.0
+            name: cluster_info
+          server: https://192.168.49.2:8443
+        name: minikube
+      contexts:
+      - context:
+          cluster: minikube
+          extensions:
+          - extension:
+              last-update: Tue, 12 Dec 2023 00:44:20 CET
+              provider: minikube.sigs.k8s.io
+              version: v1.32.0
+            name: context_info
+          namespace: default
+          user: minikube
+        name: minikube
+      current-context: minikube
+      kind: Config
+      preferences: {}
+      users:
+      - name: minikube
+        user:
+          client-certificate: /home/neogiciel/.minikube/profiles/minikube/client.crt
+          client-key: /home/neogiciel/.minikube/profiles/minikube/client.key
+
+    skip_tls_verify: false
+    namespace: default
+
 - name: hello-world-spring
   type: git
   source:
@@ -16,16 +60,6 @@ resources:
       repository: neogicel/spring-hello
       username: neogicel
       password: Patrice88$
-
-- name: kubectl
-  type: kubectl-resource
-  source:
-      api_server_uri: https://192.168.49.2:8443
-      namespace: default
-      certificate_authority_data: Y29uY291cnNlLXdlYgo=
-      token: 1633
-
-
 jobs:
 - name: test
   plan:
@@ -88,6 +122,9 @@ jobs:
         trigger: false
         passed: [package]
 
-      - put: kubectl
+      - put: k8s
         params:
-          file: "hello-world-spring/ci/deployment.yaml"
+          status_check_timeout: 60
+          command_timeout: 30
+          file: 
+          #  - hello-world-spring/ci/deployment.yaml

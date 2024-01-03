@@ -1,0 +1,1 @@
+curl -v --cert /home/neogiciel/.minikube/profiles/minikube/client.crt --cacert  /home/neogiciel/.minikube/ca.crt --key  /home/neogiciel/.minikube/profiles/minikube/client.key https://192.168.49.2:8443
