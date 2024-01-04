@@ -1,3 +1,7 @@
+#Pour activer le proxy
+kubectl proxy --port=8080 & 
+
+#faire un curl
 curl -v --cert /home/neogiciel/.minikube/profiles/minikube/client.crt --cacert  /home/neogiciel/.minikube/ca.crt --key  /home/neogiciel/.minikube/profiles/minikube/client.key https://192.168.49.2:8443
 curl -v --cert /home/neogiciel/.minikube/profiles/minikube/client.crt --cacert  /home/neogiciel/.minikube/ca.crt --key  /home/neogiciel/.minikube/profiles/minikube/client.key https://192.168.49.2:8443
 curl -v --cert /home/neogiciel/.minikube/profiles/minikube/client.crt --cacert  /home/neogiciel/.minikube/ca.crt --key  /home/neogiciel/.minikube/profiles/minikube/client.key http://dev.neogiciel.com
