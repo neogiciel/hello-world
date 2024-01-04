@@ -1,134 +1,17 @@
+#http://192.168.1.72:9000/login?fly_port=52903
+#bearer cdGn9MCv3GjNKYjXzBbLnB8sseqWr5dlAAAAAA
 resource_types:
-- name: k8s-ressource
+- name: kubernetes
   type: docker-image
   source:
     repository: neogicel/spring-hello
     tag: latest
 
 resources:
-- name: k8s
-  type: k8s-ressource
-  source:
-
-    api_server_url: https://192.168.49.2:8443
-#    api_server_cert: |
-#      -----BEGIN CERTIFICATE-----
-#      MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5p
-#      a3ViZUNBMB4XDTIzMTEyMjE3NDcyMFoXDTMzMTEyMDE3NDcyMFowFTETMBEGA1UE
-#      AxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOU0
-#      ZoIvjH7jPcqaE76iMbrH04isxjQRuD7ZQ9J6A0Nu3taVnDQ96OYSFcjdHTDqnxxW
-#      noNzEtIzpY4csXJP740teEPZJZKu4YkAOinVPuYAV+xfuuiYTGOyuiF924jwmZME
-#      xbPz0GQxXyaKR19dSNe0uKsSwxk8aaZSfv0xzE7kMLE44/5d/FxifEpgi8j54cZA
-#      xbPz0GQxXyaKR19dSNe0uKsSwxk8aaZSfv0xzE7kMLE44/5d/FxifEpgi8j54cZA
-#      4H5EgzJAE6xZdH26x2EouwjKREhXev0VHlAm2tJoxfb+BXAwbjDHFoEduZmvTYrU
-#      mq3SURHNpoXpIRdGndzr8KuQnK/xgs2xKcmrfPHwtCZYYUMCVsP1E7ph3Hz8TPv5
-#      GNqNdEUMd1VOPyu6FSECAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQW
-#      MBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQW
-#      BBTkvg5kTbS23/pRNzZmrU+5HQpmSzANBgkqhkiG9w0BAQsFAAOCAQEA171yfyfW
-#      RwVycqgrfulidfqM4jQ9bTIl7rtU02jpX2JHfqbGBYKAvUYo3gJxLfKA6gCFfWv8
-#      DMEkGPqLteZwJ9GCCIHi+3kFFOZHOF1B4wZEX+aXZPEUTho0idb40lxqeMKxnYfE
-#      iPRzxejbMWwXOS4L+ttWV/warDfxKG8wE/I2bO+xpQtJGc5EFKep6YiRvLB0jj1f
-#      wUvKQfE74W+NAjtwWt1DDaMxNEpGKQ5b7OisPLCHLBYgH7cnB2LCh4khKml9HKT5
-#      UzHW3gYp7YiIt9PIzRnsd3mDrBpdawWtNfeSEPdAeoSgEuMGmUkwhgARGmSkQGS8
-#      lp8/x+sIiraSRQ==
-#      -----END CERTIFICATE-----
-    # use client certificate
-#    client_cert: |
-#      -----BEGIN CERTIFICATE-----
-#      MIIDITCCAgmgAwIBAgIBAjANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5p
-#      a3ViZUNBMB4XDTIzMTIwMjA5NTYxNFoXDTI2MTIwMjA5NTYxNFowMTEXMBUGA1UE
-#      ChMOc3lzdGVtOm1hc3RlcnMxFjAUBgNVBAMTDW1pbmlrdWJlLXVzZXIwggEiMA0G
-#      CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC68NSzF8wqSKvNmh9ctJMGOAytj3at
-#      3YU6A0dksUbWx9CgHAo2O/3C0D2hoy0QmgtZaBN9ynpE7E2XnD6XhRneu3tOWbqk
-#      mb/xE+zHVULnbWZ4C7IPxbSFzuE6qXunj6bdsQMf1TWngM6OZGHS8hDALWnMT6Da
-#      cpcmG91Fea5em3f7IfLINmniz8eO74JHuET9LgxgShbtedSK5WZDduMRDRO6ZOiq
-#      m1FaD75Qw1oybaQwoL9TqAahKPEMPpvnBmN1/R71Q75tcHc+TcG1va7WqPcTn2pf
-#      XNMm6vZCOBdTOdrYgPrPVda/oDD8kZix66M5pJJBMdQy1c2JgOeUazwrAgMBAAGj
-#      YDBeMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUH
-#      AwIwDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBTkvg5kTbS23/pRNzZmrU+5HQpm
-#      SzANBgkqhkiG9w0BAQsFAAOCAQEApHeWS+pO0uBTUmPf3gKmP7YXywQWWKdFFh0x
-#      OlujE8UrF7dZqT7so98nIbM+S6sfXFt9/i3dFpdvi0nWsyxLx7GqF+FnkflPRAnq
-#      hl1ClY3rvVYgJVU0PvxoFU7tXcjqEfvfKJRw7cy9U3PYu0i7ja1Yif5tC96NuotB
-#      ku/CxGtltTXu42Aj32dozjuXxYZvzDopcLdZoeR9992BksXJ04a6yjnZRSJjpgrH
-#      N3AXSx5TmAdLBhe8Bweay2Qat5NIwwsD5uVyj/sT3ZXqZjcWVyX56Hq/RPuwlsqA
-#      uUftLxU68Ad5j2abqHfhyVe5aus6xOCc4fNfEm25+dFpAueLXQ==
-#      -----END CERTIFICATE-----
-#    client_key: |
-#      -----BEGIN PRIVATE KEY-----
-#      MIIEowIBAAKCAQEAuvDUsxfMKkirzZofXLSTBjgMrY92rd2FOgNHZLFG1sfQoBwK
-#      Njv9wtA9oaMtEJoLWWgTfcp6ROxNl5w+l4UZ3rt7Tlm6pJm/8RPsx1VC521meAuy
-#      D8W0hc7hOql7p4+m3bEDH9U1p4DOjmRh0vIQwC1pzE+g2nKXJhvdRXmuXpt3+yHy
-#      yDZp4s/Hju+CR7hE/S4MYEoW7XnUiuVmQ3bjEQ0TumToqptRWg++UMNaMm2kMKC/
-#      U6gGoSjxDD6b5wZjdf0e9UO+bXB3Pk3Btb2u1qj3E59qX1zTJur2QjgXUzna2ID6
-#      z1XWv6Aw/JGYseujOaSSQTHUMtXNiYDnlGs8KwIDAQABAoIBACAWUFwBPLERUjPz
-#      PWjbMdVCb6Km2lcTi9eeUnXNG/ynxX6F8ZbHi1ISDlIdQRH1bvdErvvLcls8OEFK
-#      t0+or/0ULyEOs8OnBFQr+FtqnhY9J/Z5A3JDnC3PicdY6fmj5Z9tz7x6C0CaElpM
-#      jqH3nLpv0RYZoOF+A8WtyLgxH6XrPHuOjl/l+Gb6olkO2G1vt/yYjGVmXg2k4dF2
-#      LpTZsJuHFPsa0hhC9250tqpzn0ZvjQw+GxOZFYQL/sieuYKbleZ8vCGYan9reuTM
-#      ZLw/F8zuXG/H/OuZ4ky/ehm7Yb4cq2w5jp4HNUeuZd/52cfTW7r5v2gIIKG2PSEL
-#      FkMmrtkCgYEA1vwHcGT3NnGbzx4NYo4zhpcocL6zV6am+ECGc+H81kOvRGweZrkL
-#      m54JkehBaGIsOKEV7ty/5KcQC0C+sywid9hyJrR82x/NjMjGnX16nW5EodiyfS4+
-#      E9NR4XhuCBojVVvxxnysgWf8N0fd/0tvWebxjgLpbMpPqZDxXp8Adf8CgYEA3psg
-#      7bO7iqCsq1KQ2Hbbtq0yB+m2h3mNQd9dYCPMK/PPobIA7uHbdEBVWCUAh0ixTuQP
-#      dgKFVuh4pIMedUvJH4YWjPdfCv8IP4sYdZBE+oNbIWhuVTni39sCua9VgdGlONdo
-#      eX4cEe/ZvSmFv4yllCpFXKOE5rfE0Ylcu64M8dUCgYAAzb5lYCtAa9pOQul/5dIx
-#      fZ0sFrpq6HeVVABsrHqafnRISDMw5R4y/btBbWHZNwy9RXTkiLS68RjxQdO0rcSP
-#      OCLtHB2fYBYPoayEaDSuI/xjsoCwURzwTAjxU9btdtOM/SQBPvQSI8Zgmocs7iZD
-#      asaaZk5jFrqHgsA0P1nsFwKBgCYBTDTpC6rWVcSGOy6J1Gcy2KjbMQueKAzICtQg
-#      KHqUjK1pi5k9PE9zsF51KsruET+L1kvqkENPO1GzBR83iiX0qaL1lOd2tTzMDaf8
-#      spomlQd2IegxEtfvN17mXW3lkhTLSg38BuTVE1KlZS1X4OkT8nWngUg2tcakcg2k
-#      -----END PRIVATE KEY-----
-
-    # or use kubeconfig
-    kubeconfig: |
-      apiVersion: v1
-      clusters:
-      - cluster:
-          certificate-authority: MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5pa3ViZUNBMB4XDTIzMTEyMjE3NDcyMFoXDTMzMTEyMDE3NDcyMFowFTETMBEGA1UEAxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOU0ZoIvjH7jPcqaE76iMbrH04isxjQRuD7ZQ9J6A0Nu3taVnDQ96OYSFcjdHTDqnxxWnoNzEtIzpY4csXJP740teEPZJZKu4YkAOinVPuYAV+xfuuiYTGOyuiF924jwmZMExbPz0GQxXyaKR19dSNe0uKsSwxk8aaZSfv0xzE7kMLE44/5d/FxifEpgi8j54cZA4H5EgzJAE6xZdH26x2EouwjKREhXev0VHlAm2tJoxfb+BXAwbjDHFoEduZmvTYrUmq3SURHNpoXpIRdGndzr8KuQnK/xgs2xKcmrfPHwtCZYYUMCVsP1E7ph3Hz8TPv5GNqNdEUMd1VOPyu6FSECAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTkvg5kTbS23/pRNzZmrU+5HQpmSzANBgkqhkiG9w0BAQsFAAOCAQEA171yfyfWRwVycqgrfulidfqM4jQ9bTIl7rtU02jpX2JHfqbGBYKAvUYo3gJxLfKA6gCFfWv8DMEkGPqLteZwJ9GCCIHi+3kFFOZHOF1B4wZEX+aXZPEUTho0idb40lxqeMKxnYfEiPRzxejbMWwXOS4L+ttWV/warDfxKG8wE/I2bO+xpQtJGc5EFKep6YiRvLB0jj1fwUvKQfE74W+NAjtwWt1DDaMxNEpGKQ5b7OisPLCHLBYgH7cnB2LCh4khKml9HKT5UzHW3gYp7YiIt9PIzRnsd3mDrBpdawWtNfeSEPdAeoSgEuMGmUkwhgARGmSkQGS8lp8/x+sIiraSRQ==
-          extensions:
-          - extension:
-              last-update: Tue, 12 Dec 2023 00:44:20 CET
-              provider: minikube.sigs.k8s.io
-             version: v1.32.0
-            name: cluster_info
-          server: https://192.168.49.2:8443
-        name: minikube
-      contexts:
-      - context:
-          cluster: minikube
-          extensions:
-          - extension:
-              last-update: Tue, 12 Dec 2023 00:44:20 CET
-              provider: minikube.sigs.k8s.io
-              version: v1.32.0
-            name: context_info
-          namespace: default
-          user: minikube
-        name: minikube
-      current-context: minikube
-      kind: Config
-      preferences: {}
-      users:
-      - name: minikube
-        user:
-          client-certificate: MIIDITCCAgmgAwIBAgIBAjANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5pa3ViZUNBMB4XDTIzMTIwMjA5NTYxNFoXDTI2MTIwMjA5NTYxNFowMTEXMBUGA1UEChMOc3lzdGVtOm1hc3RlcnMxFjAUBgNVBAMTDW1pbmlrdWJlLXVzZXIwggEiMA0G    CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC68NSzF8wqSKvNmh9ctJMGOAytj3at3YU6A0dksUbWx9CgHAo2O/3C0D2hoy0QmgtZaBN9ynpE7E2XnD6XhRneu3tOWbqkmb/xE+zHVULnbWZ4C7IPxbSFzuE6qXunj6bdsQMf1TWngM6OZGHS8hDALWnMT6DacpcmG91Fea5em3f7IfLINmniz8eO74JHuET9LgxgShbtedSK5WZDduMRDRO6ZOiqm1FaD75Qw1oybaQwoL9TqAahKPEMPpvnBmN1/R71Q75tcHc+TcG1va7WqPcTn2pfXNMm6vZCOBdTOdrYgPrPVda/oDD8kZix66M5pJJBMdQy1c2JgOeUazwrAgMBAAGjYDBeMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBTkvg5kTbS23/pRNzZmrU+5HQpmSzANBgkqhkiG9w0BAQsFAAOCAQEApHeWS+pO0uBTUmPf3gKmP7YXywQWWKdFFh0xOlujE8UrF7dZqT7so98nIbM+S6sfXFt9/i3dFpdvi0nWsyxLx7GqF+FnkflPRAnqhl1ClY3rvVYgJVU0PvxoFU7tXcjqEfvfKJRw7cy9U3PYu0i7ja1Yif5tC96NuotBku/CxGtltTXu42Aj32dozjuXxYZvzDopcLdZoeR9992BksXJ04a6yjnZRSJjpgrHN3AXSx5TmAdLBhe8Bweay2Qat5NIwwsD5uVyj/sT3ZXqZjcWVyX56Hq/RPuwlsqAuUftLxU68Ad5j2abqHfhyVe5aus6xOCc4fNfEm25+dFpAueLXQ==
-          client-key: MIIEowIBAAKCAQEAuvDUsxfMKkirzZofXLSTBjgMrY92rd2FOgNHZLFG1sfQoBwKNjv9wtA9oaMtEJoLWWgTfcp6ROxNl5w+l4UZ3rt7Tlm6pJm/8RPsx1VC521meAuyD8W0hc7hOql7p4+m3bEDH9U1p4DOjmRh0vIQwC1pzE+g2nKXJhvdRXmuXpt3+yHyyDZp4s/Hju+CR7hE/S4MYEoW7XnUiuVmQ3bjEQ0TumToqptRWg++UMNaMm2kMKC/U6gGoSjxDD6b5wZjdf0e9UO+bXB3Pk3Btb2u1qj3E59qX1zTJur2QjgXUzna2ID6z1XWv6Aw/JGYseujOaSSQTHUMtXNiYDnlGs8KwIDAQABAoIBACAWUFwBPLERUjPzPWjbMdVCb6Km2lcTi9eeUnXNG/ynxX6F8ZbHi1ISDlIdQRH1bvdErvvLcls8OEFKt0+or/0ULyEOs8OnBFQr+FtqnhY9J/Z5A3JDnC3PicdY6fmj5Z9tz7x6C0CaElpMjqH3nLpv0RYZoOF+A8WtyLgxH6XrPHuOjl/l+Gb6olkO2G1vt/yYjGVmXg2k4dF2LpTZsJuHFPsa0hhC9250tqpzn0ZvjQw+GxOZFYQL/sieuYKbleZ8vCGYan9reuTMZLw/F8zuXG/H/OuZ4ky/ehm7Yb4cq2w5jp4HNUeuZd/52cfTW7r5v2gIIKG2PSELFkMmrtkCgYEA1vwHcGT3NnGbzx4NYo4zhpcocL6zV6am+ECGc+H81kOvRGweZrkLm54JkehBaGIsOKEV7ty/5KcQC0C+sywid9hyJrR82x/NjMjGnX16nW5EodiyfS4+E9NR4XhuCBojVVvxxnysgWf8N0fd/0tvWebxjgLpbMpPqZDxXp8Adf8CgYEA3psg7bO7iqCsq1KQ2Hbbtq0yB+m2h3mNQd9dYCPMK/PPobIA7uHbdEBVWCUAh0ixTuQPdgKFVuh4pIMedUvJH4YWjPdfCv8IP4sYdZBE+oNbIWhuVTni39sCua9VgdGlONdoeX4cEe/ZvSmFv4yllCpFXKOE5rfE0Ylcu64M8dUCgYAAzb5lYCtAa9pOQul/5dIxfZ0sFrpq6HeVVABsrHqafnRISDMw5R4y/btBbWHZNwy9RXTkiLS68RjxQdO0rcSPOCLtHB2fYBYPoayEaDSuI/xjsoCwURzwTAjxU9btdtOM/SQBPvQSI8Zgmocs7iZDasaaZk5jFrqHgsA0P1nsFwKBgCYBTDTpC6rWVcSGOy6J1Gcy2KjbMQueKAzICtQgKHqUjK1pi5k9PE9zsF51KsruET+L1kvqkENPO1GzBR83iiX0qaL1lOd2tTzMDaf8spomlQd2IegxEtfvN17mXW3lkhTLSg38BuTVE1KlZS1X4OkT8nWngUg2tcakcg2k
-      
-    skip_tls_verify: false
-    namespace: default
-     # watched resources(deployment or statefulset is supported)
-    watch_resources:
-    - name: app1
-      kind: Deployment
-    - name: app2
-      kind: Deployment
-    - name: web
-      kind: StatefulSet
-
 - name: hello-world-spring
   type: git
   source:
-    uri: https://github.com/neogiciel/hello-world.git
+      uri: https://github.com/neogiciel/hello-world.git
 
 - name: docker-images-hello-world-spring
   type: docker-image
@@ -136,6 +19,14 @@ resources:
       repository: neogicel/spring-hello
       username: neogicel
       password: Patrice88$
+#- name: k8s
+#  type: kubernetes
+#  source:
+      #kubeconfig: https://192.168.49.2:8443
+#      api_server_uri: https://192.168.49.2:8443
+#      namespace: default
+#      certificate_authority_data: MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5pa3ViZUNBMB4XDTIzMTEyMjE3NDcyMFoXDTMzMTEyMDE3NDcyMFowFTETMBEGA1UEAxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOU0ZoIvjH7jPcqaE76iMbrH04isxjQRuD7ZQ9J6A0Nu3taVnDQ96OYSFcjdHTDqnxxWnoNzEtIzpY4csXJP740teEPZJZKu4YkAOinVPuYAV+xfuuiYTGOyuiF924jwmZMExbPz0GQxXyaKR19dSNe0uKsSwxk8aaZSfv0xzE7kMLE44/5d/FxifEpgi8j54cZA4H5EgzJAE6xZdH26x2EouwjKREhXev0VHlAm2tJoxfb+BXAwbjDHFoEduZmvTYrUmq3SURHNpoXpIRdGndzr8KuQnK/xgs2xKcmrfPHwtCZYYUMCVsP1E7ph3Hz8TPv5GNqNdEUMd1VOPyu6FSECAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTkvg5kTbS23/pRNzZmrU+5HQpmSzANBgkqhkiG9w0BAQsFAAOCAQEA171yfyfWRwVycqgrfulidfqM4jQ9bTIl7rtU02jpX2JHfqbGBYKAvUYo3gJxLfKA6gCFfWv8DMEkGPqLteZwJ9GCCIHi+3kFFOZHOF1B4wZEX+aXZPEUTho0idb40lxqeMKxnYfEiPRzxejbMWwXOS4L+ttWV/warDfxKG8wE/I2bO+xpQtJGc5EFKep6YiRvLB0jj1fwUvKQfE74W+NAjtwWt1DDaMxNEpGKQ5b7OisPLCHLBYgH7cnB2LCh4khKml9HKT5UzHW3gYp7YiIt9PIzRnsd3mDrBpdawWtNfeSEPdAeoSgEuMGmUkwhgARGmSkQGS8lp8/x+sIiraSRQ==
+#      token: cdGn9MCv3GjNKYjXzBbLnB8sseqWr5dlAAAAAA
 jobs:
 - name: test
   plan:
@@ -190,17 +81,52 @@ jobs:
     params:
         build: spring-boot-service-out
 
-- name: deploy
-  public: true
-  serial: false
+- name: add-regcred-to-k8s
   plan:
-      - get: docker-images-hello-world-spring
-        trigger: false
-        passed: [package]
+  - task: push-regcred
+    config:
+      platform: linux
 
-      - put: k8s
-        params:
-          status_check_timeout: 60
-          command_timeout: 30
-          file: 
-           - hello-world-spring/ci/deployment.yaml
+      image_resource:
+        type: registry-image
+        source:
+         #repository: dtzar/helm-kubectl
+          repository: neogicel/spring-hello
+      run:
+        path: /bin/sh
+        args:
+          - -cx
+          - |
+           # delete secret first and ignore if not found
+           #kubectl get pods
+            kubectl --server="http://dev.neogiciel.com" --token="cdGn9MCv3GjNKYjXzBbLnB8sseqWr5dlAAAAAA" -n default --ignore-not-found=true
+
+
+#- name : deploy
+#  public: true
+#  serial: true
+#  plan:
+#  - get: hello-world-spring
+#    trigger: true
+#    passed: [test]
+#  - task: kubernetes-deployt
+#    config:
+#      platform: linux
+#      inputs:
+#        - name: hello-world-spring
+#      run:
+#        path: kubectl"
+#        args:
+#          - get pods      
+- name: hello-world-job
+  plan:
+  - task: hello-world-task
+    config:
+     platform: linux
+     image_resource:
+       type: registry-image
+       source:
+         repository: busybox
+     run:
+        path: echo
+        args: ["Hello world!"]
