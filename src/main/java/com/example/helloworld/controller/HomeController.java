@@ -36,12 +36,12 @@ public class HomeController {
 
     @GetMapping("/test1")
     public Map<String,String> test1() {
-        return Map.of("Test", "test");
+        return Map.of("Test", "test1");
     }
 
     @GetMapping("/test2")
     public Map<String,String> test2() {
-        return Map.of("Test", "test");
+        return Map.of("Test", "test2");
     }
 
 
