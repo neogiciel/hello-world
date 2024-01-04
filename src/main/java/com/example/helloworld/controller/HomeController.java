@@ -33,4 +33,16 @@ public class HomeController {
     public Map<String,String> security() {
         return Map.of("Security", "security");
     }
+
+    @GetMapping("/test1")
+    public Map<String,String> test1() {
+        return Map.of("Test", "test");
+    }
+
+    @GetMapping("/test2")
+    public Map<String,String> test2() {
+        return Map.of("Test", "test");
+    }
+
+
 }
