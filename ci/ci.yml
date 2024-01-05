@@ -87,7 +87,7 @@ jobs:
   serial: false
   plan:
       - get: hello-world-spring
-        trigger: false
+        trigger: true
         passed: [package]
 
       - put: k8s-cluster

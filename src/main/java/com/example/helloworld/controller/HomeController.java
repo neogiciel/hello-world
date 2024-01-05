@@ -6,6 +6,8 @@ package com.example.helloworld.controller;
  * 
  */
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController()
 @RequestMapping("/")
 public class HomeController {
+
+
+    @Value("${application.version}")
+    String applicationVersion;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -42,6 +48,11 @@ public class HomeController {
     @GetMapping("/test2")
     public Map<String,String> test2() {
         return Map.of("Test", "test2");
+    }
+
+    @GetMapping("/version")
+    public Map<String,String> version() {
+        return Map.of("Version", applicationVersion);
     }
 
 
