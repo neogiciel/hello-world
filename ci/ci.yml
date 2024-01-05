@@ -16,7 +16,7 @@ resources:
   type: docker-image
   source:
       repository: neogicel/spring-hello
-      tag: '2.2'
+      tag: '2.4'
       username: neogicel
       password: Patrice88$
 

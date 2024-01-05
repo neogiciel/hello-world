@@ -21,7 +21,7 @@ spec:
       containers:
         - name: spring-hello-k8s
           #image: neogicel/spring-hello:latest
-          image: neogicel/spring-hello:2.2
+          image: neogicel/spring-hello:2.4
           imagePullPolicy: Always
           ports:
             - containerPort: 8080 
