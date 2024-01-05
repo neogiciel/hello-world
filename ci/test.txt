@@ -3,7 +3,6 @@ fly --target=tutorial login --concourse-url=http://127.0.0.1:8080 --username=adm
 fly --target=tutorial sync
 D:\concourse\fly.exe -t tutorial set-pipeline -p hello-world-spring -c ci/ci.yml
 
-
 #Pour activer le proxy
 kubectl proxy --port=8080 & 
 
